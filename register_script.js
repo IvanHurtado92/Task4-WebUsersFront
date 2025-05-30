@@ -110,7 +110,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 body: JSON.stringify(data)
             });
             
-            if(!response.ok){
+            if(response.status === 500){
+                showAlert("Email already Exists",alertBoxBad,alertTextBad);
+            }
+            else if(!response.ok){
                 const failReason = await response.json();
                 showAlert(failReason.data,alertBoxBad,alertTextBad);
             }
