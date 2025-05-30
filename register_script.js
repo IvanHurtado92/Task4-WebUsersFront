@@ -124,7 +124,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
         catch(error){
-            showAlert(error.message,alertBoxBad,alertTextBad);    
+            showAlert("Unable to access server",alertBoxBad,alertTextBad);    
         }
 
         // Reset button
@@ -135,10 +135,17 @@ document.addEventListener('DOMContentLoaded', function() {
         loginForm.reset();
         loginForm.classList.remove('was-validated');
         
+        // Remove validation classes from individual inputs
+        accountInput.classList.remove('is-valid', 'is-invalid');
+        emailInput.classList.remove('is-valid', 'is-invalid');
+        passwordInput.classList.remove('is-valid', 'is-invalid');
+
+
         // Reset password visibility
         passwordInput.setAttribute('type', 'password');
         eyeIcon.classList.remove('bi-eye-slash');
         eyeIcon.classList.add('bi-eye');
+
     }
 });
 

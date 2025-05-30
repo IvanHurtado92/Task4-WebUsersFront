@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
         catch(error){
-            showAlert(error.message);    
+            showAlert("Unable to access server");    
         }
 
         // Reset button
@@ -110,6 +110,10 @@ document.addEventListener('DOMContentLoaded', function() {
         // Reset form
         loginForm.reset();
         loginForm.classList.remove('was-validated');
+
+        // Remove validation classes from individual inputs
+        emailInput.classList.remove('is-valid', 'is-invalid');
+        passwordInput.classList.remove('is-valid', 'is-invalid');
         
         // Reset password visibility
         passwordInput.setAttribute('type', 'password');

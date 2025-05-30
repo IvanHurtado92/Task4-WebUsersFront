@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
             "email":email
         }
         
-        registerUser(data);
+        recoverPass(data);
     });
     
     // Real-time validation
@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    async function registerUser(data) {
+    async function recoverPass(data) {
         // Simulate login process
         const submitBtn = loginForm.querySelector('button[type="submit"]');
         const originalBtnText = submitBtn.innerHTML;
@@ -73,13 +73,16 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
         catch(error){
-            showAlert(error.message,alertBoxBad,alertTextBad);    
+            showAlert("Unable to access server",alertBoxBad,alertTextBad);    
         }
 
         // Reset button
         submitBtn.innerHTML = originalBtnText;
         submitBtn.disabled = false;
         
+        // Remove validation classes from individual inputs
+        emailInput.classList.remove('is-valid', 'is-invalid');
+
         // Reset form
         loginForm.reset();
         loginForm.classList.remove('was-validated');
