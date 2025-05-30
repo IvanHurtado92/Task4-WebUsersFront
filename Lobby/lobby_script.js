@@ -11,8 +11,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const userWelcome = document.getElementById('userWelcome');
     userWelcome.textContent = `Welcome ${sessionStorage.getItem('email')}`;
 
-    // const apiURL = "https://user-data-api-hjawh4acgdf3ewhg.mexicocentral-01.azurewebsites.net/api/" // API REAL
-    const apiURL = "https://localhost:7150/api/" // API TESTING
+    const apiURL = "https://user-data-api-hjawh4acgdf3ewhg.mexicocentral-01.azurewebsites.net/api/" // API REAL
+    // const apiURL = "https://localhost:7150/api/" // API TESTING
 
     const logoutButton = document.getElementById('logoutButton');
     const blockButton = document.getElementById('blockButton');

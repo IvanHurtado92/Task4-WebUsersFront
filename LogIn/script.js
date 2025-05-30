@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // const apiURL = "https://user-data-api-hjawh4acgdf3ewhg.mexicocentral-01.azurewebsites.net/api/" // API REAL
-    const apiURL = "https://localhost:7150/api/" // API TESTING
+    const apiURL = "https://user-data-api-hjawh4acgdf3ewhg.mexicocentral-01.azurewebsites.net/api/" // API REAL
+    // const apiURL = "https://localhost:7150/api/" // API TESTING
     const loginForm = document.getElementById('loginForm');
     const passwordInput = document.getElementById('password');
     const togglePassword = document.getElementById('togglePassword');
