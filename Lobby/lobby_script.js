@@ -6,7 +6,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     const delay = ms => new Promise(res => setTimeout(res, ms));
-
+    const idCurrentUser = sessionStorage.getItem('id');
+    console.log(idCurrentUser);
 
     const userWelcome = document.getElementById('userWelcome');
     userWelcome.textContent = `Welcome ${sessionStorage.getItem('email')}`;
@@ -182,8 +183,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     async function isCurrentUserBlocked() {
-        const account = sessionStorage.getItem('email');
-        data = {'email':account}
+        const email = sessionStorage.getItem('email');
+        data = {'email':email}
         try{
             const response = await fetch(`${apiURL}User/IsUserBlocked`,{
                 method: 'POST',
@@ -211,7 +212,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     async function blockUser(){
         if (await isCurrentUserBlocked()){
-            logOutUser();
+            return logOutUser();
         }
         const checkedCheckboxes = document.querySelectorAll('.user-checkbox:checked')
         let UserIDs = [];
@@ -235,6 +236,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 showAlert(failReason.data,false);
             }
             else{
+                if(UserIDs.includes(idCurrentUser)){
+                    return logOutUser();
+                }
                 showAlert('User/s Blocked Successfully',true);
                 await delay(3000);
                 location.reload();
@@ -249,7 +253,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     async function unblockUser(){
         if (await isCurrentUserBlocked()){
-            logOutUser();
+            return logOutUser();
         }
         const checkedCheckboxes = document.querySelectorAll('.user-checkbox:checked')
         let UserIDs = [];
@@ -287,7 +291,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     async function deleteUser(){
         if (await isCurrentUserBlocked()){
-            logOutUser();
+            return logOutUser();
         }
         const checkedCheckboxes = document.querySelectorAll('.user-checkbox:checked')
         let UserIDs = [];

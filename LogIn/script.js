@@ -91,8 +91,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 showAlert(failReason.data);
             }
             else{
+                const result = await response.json();
+                const id = result.data;
                 const email = document.getElementById('email').value;
                 sessionStorage.setItem('email',email);
+                sessionStorage.setItem('id',id);
                 sessionStorage.setItem('logged_in',true);
                 location.replace("./../Lobby/lobby.html");
             }
