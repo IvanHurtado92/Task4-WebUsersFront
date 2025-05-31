@@ -217,6 +217,10 @@ document.addEventListener('DOMContentLoaded', function() {
         let UserIDs = [];
         checkedCheckboxes.forEach(checkbox => UserIDs.push(checkbox.value))
 
+        if(UserIDs.length === 0){
+            return showAlert("No users selected",false);
+        }
+
         try{
             const response = await fetch(`${apiURL}User/BlockUser`,{
                 method:'POST',
@@ -251,6 +255,10 @@ document.addEventListener('DOMContentLoaded', function() {
         let UserIDs = [];
         checkedCheckboxes.forEach(checkbox => UserIDs.push(checkbox.value))
 
+        if(UserIDs.length === 0){
+            return showAlert("No users selected",false);
+        }
+
         try{
             const response = await fetch(`${apiURL}User/UnblockUser`,{
                 method:'POST',
@@ -284,6 +292,10 @@ document.addEventListener('DOMContentLoaded', function() {
         const checkedCheckboxes = document.querySelectorAll('.user-checkbox:checked')
         let UserIDs = [];
         checkedCheckboxes.forEach(checkbox => UserIDs.push(checkbox.value))
+
+        if(UserIDs.length === 0){
+            return showAlert("No users selected",false);
+        }
 
         try{
             const response = await fetch(`${apiURL}User/DeleteUser`,{
